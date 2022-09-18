@@ -27,20 +27,22 @@ let currentX = 0
 let sliderHead = document.querySelectorAll(".sliderHead")
 let sliderText = document.querySelectorAll(".sliderText")
 let maxLenghtSlider = 300
-
+let sliderHeadL = 50
+let sliderTextL = 700
 let slider2 = document.querySelector(".slider2s")
 let slider2s = document.querySelector(".slider2")
-let currentXSlider2 = 0
+let currentXSlider2 = 0;
 let slider2Child = document.querySelectorAll(".slider2Child")
 let slider2H = document.querySelectorAll(".slider2H")
 let slider2P = document.querySelectorAll(".slider2P")
 
 
-
+if (windowInnerWidth < 600) {
+    sliderHeadL = 10
+}
 window.addEventListener("resize", function () {
     windowInnerWidth = window.innerWidth
     windowInnerHeight = window.innerHeight
-    
     if(navStatus){
         if(windowInnerWidth >= 820){
             nav.style.left = "0%"
@@ -61,7 +63,11 @@ window.addEventListener("resize", function () {
         }
     }
     if (windowInnerWidth < 800){
-        maxLenghtSlider = 50
+        maxLenghtSlider = 75
+        sliderHeadL = 50
+        
+    } else if (windowInnerWidth < 600){
+        sliderHeadL = 10
     }
     else if (windowInnerWidth < 400){
         maxLenghtSlider = 50
@@ -199,16 +205,16 @@ slider1s.addEventListener("touchstart", function(e){
     let slider1Width = slider1s.offsetWidth
     let clientX1 = e.changedTouches[0].pageX;
     slider1.style.transition = "none"
-    document.addEventListener( "touchmove",function (e) {
+    document.ontouchmove = function (e) {
         let clientX2 = e.changedTouches[0].pageX;
         currentX = clientX2 - clientX1
         slider1.style.transform = "translate(" + (-slider1current * slider1Width + currentX) + "px)"
-    })
-    document.addEventListener("touchend", function () {
+    }
+    document.ontouchend = function () {
 
-        document.addEventListener("touchmove", function(){return null})
-        slider1s.addEventListener("touchend", function () { return null })
-        document.addEventListener("touchend", function () { return null })
+        document.ontouchmove = null
+        slider1s.ontouchend = null
+        document.ontouchend = null
         if (currentX < maxLenghtSlider && currentX > -maxLenghtSlider) {
             slider1.style.transform = "translate(-" + slider1current * 100 + "%)"
         } else if (currentX < -maxLenghtSlider) {
@@ -231,7 +237,7 @@ slider1s.addEventListener("touchstart", function(e){
             }
         }
         slider1.style.transition = ".6s"
-    })
+    }
 })
     
 
@@ -246,8 +252,8 @@ slider1s.ondragstart = function () {
 // }
 
 
-for (let i = 0; i < sliderText.length; i++) {sliderText[i].innerHTML = maxWordsTable(sliderText[i], 700)}
-for (let i = 0; i < sliderHead.length; i++) { sliderHead[i].innerHTML = maxWordsTable(sliderHead[i], 50) }
+for (let i = 0; i < sliderText.length; i++) { sliderText[i].innerHTML = maxWordsTable(sliderText[i], sliderTextL)}
+for (let i = 0; i < sliderHead.length; i++) { sliderHead[i].innerHTML = maxWordsTable(sliderHead[i], sliderHeadL) }
 for (let i = 0; i < listH.length; i++) { listH[i].innerHTML = maxWordsTable(listH[i], 20) }
 for (let i = 0; i < listP.length; i++) { listP[i].innerHTML = maxWordsTable(listP[i], 270) }
 for (let i = 0; i < slider2H.length; i++) { slider2H[i].innerHTML = maxWordsTable(slider2H[i], 25) }
@@ -286,13 +292,13 @@ slider2s.onmousedown = function (e) {
         document.onmouseup = null;
     }
 }
-
+let currentSlider2 = 0
 slider2s.addEventListener( "touchstart",function (e) {
     e.preventDefault()
     let slider2Width = body.offsetWidth;
-    let currentSlider2 = 0
+    currentSlider2 = 0
     let clientX = e.changedTouches[0].pageX;
-    document.addEventListener( "touchmove",function (e) {
+    document.ontouchmove = function (e) {
         let clientX1 = e.changedTouches[0].pageX;
         currentSlider2 = clientX1 - clientX
         if (currentSlider2 + currentXSlider2 > 0) {
@@ -305,9 +311,12 @@ slider2s.addEventListener( "touchstart",function (e) {
             slider2.style.transform = "translate(" + (currentSlider2 + currentXSlider2) + "px)"
         }
 
-    })
-    document.addEventListener( "touchend", function () {
-        currentXSlider2 = currentXSlider2 + currentSlider2
+    }
+    document.ontouchend =  function () {
+        document.ontouchmove = null
+        slider1s.ontouchend = null
+        document.ontouchend  = null
+        currentXSlider2 = currentSlider2 + currentXSlider2
         
-    })
+    }
 })
