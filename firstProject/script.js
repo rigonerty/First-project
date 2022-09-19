@@ -1,44 +1,57 @@
-let nav = document.querySelector("nav")
-let navClose = document.querySelector(".navClose")
-let navShow = document.querySelector(".navShow")
-let body = document.querySelector("body")
-let root = document.querySelector(":root")
-let html = document.querySelector("html")
-let theme = document.querySelector(".theme")
-let rootStyle = getComputedStyle(root)
+const nav = document.querySelector("nav")
+const navClose = document.querySelector(".navClose")
+const navShow = document.querySelector(".navShow")
+const header = document.querySelector("header")
+const body = document.querySelector("body")
+const root = document.querySelector(":root")
+const html = document.querySelector("html")
+const theme = document.querySelector(".theme")
+const rootStyle = getComputedStyle(root)
 let statusTheme = true
-let leftNav = document.querySelector(".leftNav")
+const leftNav = document.querySelector(".leftNav")
 let windowInnerWidth = window.innerWidth
 let windowInnerHeight = window.innerHeight
 let navStatus = false
-let content = document.querySelector(".content")
-let listH = document.querySelectorAll(".listH")
-let listP = document.querySelectorAll(".listP")
+const content = document.querySelector(".content")
+const listH = document.querySelectorAll(".listH")
+const listP = document.querySelectorAll(".listP")
+const inputSearch = document.querySelector(".rightNav > input")
+const searchBlock = document.querySelector(".search")
+let searchstatus = false
+const web = document.querySelector(".web")
 
-
-let rightBtnSlider = document.querySelector(".rightBtn")
-let leftBtnSlider = document.querySelector(".leftBtn")
-let slider1 = document.querySelector(".slider1s")
-let slider1Chiled = document.getElementsByClassName("sliderChild")
+const rightBtnSlider = document.querySelector(".rightBtn")
+const leftBtnSlider = document.querySelector(".leftBtn")
+const slider1 = document.querySelector(".slider1s")
+const slider1Chiled = document.getElementsByClassName("sliderChild")
 let slider1current = 0;
 let slider1MoveStatus = false
-let slider1s = document.querySelector(".slider1")
+const slider1s = document.querySelector(".slider1")
 let currentX = 0
-let sliderHead = document.querySelectorAll(".sliderHead")
-let sliderText = document.querySelectorAll(".sliderText")
+const sliderHead = document.querySelectorAll(".sliderHead")
+const sliderText = document.querySelectorAll(".sliderText")
 let maxLenghtSlider = 300
 let sliderHeadL = 50
 let sliderTextL = 700
-let slider2 = document.querySelector(".slider2s")
-let slider2s = document.querySelector(".slider2")
+const slider2 = document.querySelector(".slider2s")
+const slider2s = document.querySelector(".slider2")
 let currentXSlider2 = 0;
-let slider2Child = document.querySelectorAll(".slider2Child")
-let slider2H = document.querySelectorAll(".slider2H")
-let slider2P = document.querySelectorAll(".slider2P")
+const slider2Child = document.querySelectorAll(".slider2Child")
+const slider2H = document.querySelectorAll(".slider2H")
+const slider2P = document.querySelectorAll(".slider2P")
 
 
 if (windowInnerWidth < 600) {
     sliderHeadL = 10
+}
+if (windowInnerWidth > 1200){
+    sliderTextL = 1200
+}
+if (windowInnerWidth > 1530) {
+    sliderTextL = 1000
+}
+if (windowInnerWidth > 2500) {
+    sliderTextL = 2000
 }
 window.addEventListener("resize", function () {
     windowInnerWidth = window.innerWidth
@@ -47,12 +60,12 @@ window.addEventListener("resize", function () {
         if(windowInnerWidth >= 820){
             nav.style.left = "0%"
             nav.style.opacity = "1"
-            body.style.marginLeft = 200 + (html.offsetWidth / 100) * 2 + 'px' 
+            web.style.marginLeft = 200 + (html.offsetWidth / 100) * 2 + 'px' 
             leftNav.style.marginLeft = "160px"
             navShow.style.visibility = "hidden"
         }else{
-            body.style.margin = "2%"
-            body.style.marginTop = "50px"
+            web.style.margin = "2%"
+            web.style.marginTop = "50px"
             navShow.style.visibility = "hidden"
             nav.style.opacity = "1"
         }
@@ -78,6 +91,49 @@ window.addEventListener("resize", function () {
 
 
 
+for (let i = 0; i < sliderText.length; i++) { sliderText[i].innerHTML = maxWordsTable(sliderText[i], sliderTextL) }
+for (let i = 0; i < sliderHead.length; i++) { sliderHead[i].innerHTML = maxWordsTable(sliderHead[i], sliderHeadL) }
+for (let i = 0; i < listH.length; i++) { listH[i].innerHTML = maxWordsTable(listH[i], 20) }
+for (let i = 0; i < listP.length; i++) { listP[i].innerHTML = maxWordsTable(listP[i], 270) }
+for (let i = 0; i < slider2H.length; i++) { slider2H[i].innerHTML = maxWordsTable(slider2H[i], 25) }
+for (let i = 0; i < slider2P.length; i++) { slider2P[i].innerHTML = maxWordsTable(slider2P[i], 200) }
+function maxWordsTable(text, n) {
+    let textP = text.innerHTML
+    if (textP.length > n) {
+        textP = textP.substring(0, n) + "...";
+    }
+    return textP;
+}
+
+
+
+
+
+
+document.addEventListener("click", function (e) {
+    const withinSearch = e.composedPath().includes(searchBlock);
+    const withinSearchInput = e.composedPath().includes(inputSearch)
+    if (!withinSearch && !withinSearchInput){
+        searchBlock.style.display = "none"
+        content.style.filter = "blur(0)";
+        nav.style.filter = "blur(0)"
+        header.style.filter = "blur(0)"
+    }
+})
+document.addEventListener("keydown", function (e) {
+    if(e.keyCode == 27){
+        searchBlock.style.display = "none"
+        content.style.filter = "blur(0)";
+        nav.style.filter = "blur(0)"
+        header.style.filter = "blur(0)"
+    }
+})
+inputSearch.addEventListener( "click", function () {
+    searchBlock.style.display = "block";
+    content.style.filter = "blur(5px)";
+    nav.style.filter = "blur(5px)"
+    header.style.filter = "blur(5px)"
+})
 theme.addEventListener("click", function () {
     if(statusTheme){
         html.style.backgroundColor = rootStyle.getPropertyValue("--black")
@@ -109,8 +165,8 @@ theme.addEventListener("click", function () {
 navClose.addEventListener("click", function () {
     
         nav.style.left = "-200px"
-        body.style.margin = "2%"
-        body.style.marginTop = "50px"
+        content.style.margin = "2%"
+        web.style.marginTop = "50px"
         leftNav.style.marginLeft="20px"
         navShow.style.visibility = "visible"
         setTimeout(function () {
@@ -124,13 +180,13 @@ navShow.addEventListener("click", function () {
     if (windowInnerWidth >= 820) {
         nav.style.left = "0%"
         nav.style.opacity = "1"
-        body.style.marginLeft = 200 + (html.offsetWidth/100)*2 + "px" 
+        content.style.marginLeft = 200 + (body.offsetWidth/100)*2 + "px" 
         leftNav.style.marginLeft = "160px"
         navShow.style.visibility = "hidden"
     }else{
         nav.style.left = "0%"
-        body.style.margin = "2%"
-        body.style.marginTop = 50 + "px"
+        content.style.margin = "2%"
+        web.style.marginTop = 50 + "px"
         navShow.style.visibility = "hidden"
         nav.style.opacity = "1"
     }
@@ -252,23 +308,11 @@ slider1s.ondragstart = function () {
 // }
 
 
-for (let i = 0; i < sliderText.length; i++) { sliderText[i].innerHTML = maxWordsTable(sliderText[i], sliderTextL)}
-for (let i = 0; i < sliderHead.length; i++) { sliderHead[i].innerHTML = maxWordsTable(sliderHead[i], sliderHeadL) }
-for (let i = 0; i < listH.length; i++) { listH[i].innerHTML = maxWordsTable(listH[i], 20) }
-for (let i = 0; i < listP.length; i++) { listP[i].innerHTML = maxWordsTable(listP[i], 270) }
-for (let i = 0; i < slider2H.length; i++) { slider2H[i].innerHTML = maxWordsTable(slider2H[i], 25) }
-for (let i = 0; i < slider2P.length; i++) { slider2P[i].innerHTML = maxWordsTable(slider2P[i], 200) }
-function maxWordsTable(text, n) {
-    let textP = text.innerHTML
-    if (textP.length > n) {
-        textP = textP.substring(0, n) + "...";
-    }
-    return textP;
-}
+
 
 
 slider2s.onmousedown = function (e) {
-    let slider2Width = body.offsetWidth;
+    let slider2Width = web.offsetWidth;
     let currentSlider2 = 0
     let clientX = e.pageX;
     document.onmousemove = function (e) {
@@ -295,7 +339,7 @@ slider2s.onmousedown = function (e) {
 let currentSlider2 = 0
 slider2s.addEventListener( "touchstart",function (e) {
     e.preventDefault()
-    let slider2Width = body.offsetWidth;
+    let slider2Width = web.offsetWidth;
     currentSlider2 = 0
     let clientX = e.changedTouches[0].pageX;
     document.ontouchmove = function (e) {
