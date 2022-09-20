@@ -143,7 +143,7 @@ theme.addEventListener("click", function () {
         root.style.setProperty("--a-hover", "#333333")
         root.style.setProperty("--a-active", "#202020")
         root.style.setProperty("--color-header", "black")
-        theme.src = "/img/icon/moon.png"
+        theme.src = "img/icon/moon.png"
         statusTheme = false
     }else{
         html.style.backgroundColor = rootStyle.getPropertyValue("--white")
@@ -154,7 +154,7 @@ theme.addEventListener("click", function () {
         root.style.setProperty("--background-color", "rgb(245,245,245)")
         root.style.setProperty("--color-header", "white")
         statusTheme = true
-        theme.src = "/img/icon/sun.png"
+        theme.src = "img/icon/sun.png"
     }
     
 })
@@ -312,7 +312,7 @@ slider1s.ondragstart = function () {
 
 
 slider2s.onmousedown = function (e) {
-    let slider2Width = web.offsetWidth;
+    let slider2Width = content.offsetWidth;
     let currentSlider2 = 0
     let clientX = e.pageX;
     document.onmousemove = function (e) {
@@ -339,7 +339,7 @@ slider2s.onmousedown = function (e) {
 let currentSlider2 = 0
 slider2s.addEventListener( "touchstart",function (e) {
     e.preventDefault()
-    let slider2Width = web.offsetWidth;
+    let slider2Width = content.offsetWidth;
     currentSlider2 = 0
     let clientX = e.changedTouches[0].pageX;
     document.ontouchmove = function (e) {
