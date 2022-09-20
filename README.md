@@ -1,2 +1,4 @@
 # First-project
-This is my first project on html, css, js.
+##Это мой первый проект
+-начистый js
+-чистый css
