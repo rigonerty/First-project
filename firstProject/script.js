@@ -46,7 +46,7 @@ if (windowInnerWidth < 400){
 if (windowInnerWidth < 600) {
     sliderHeadL = 10
 }
-if ((windowInnerWidth < 800){
+if (windowInnerWidth < 800){
     maxLenghtSlider = 75
 }
 if (windowInnerWidth > 1200){
