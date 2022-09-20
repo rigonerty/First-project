@@ -40,9 +40,14 @@ const slider2Child = document.querySelectorAll(".slider2Child")
 const slider2H = document.querySelectorAll(".slider2H")
 const slider2P = document.querySelectorAll(".slider2P")
 
-
+if (windowInnerWidth < 400){
+    maxLenghtSlider = 50
+}
 if (windowInnerWidth < 600) {
     sliderHeadL = 10
+}
+if ((windowInnerWidth < 800){
+    maxLenghtSlider = 75
 }
 if (windowInnerWidth > 1200){
     sliderTextL = 1200
