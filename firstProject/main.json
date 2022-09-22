@@ -1,0 +1,66 @@
+{
+    "titles":[
+        
+        {
+            "name":"Bacuman",
+            "description" : "lorem skg ksg skdjgh skoes sodoodgk sdjgj sdfghsdg sdgsdhj ejdfj dfj drj",
+            "score": "4.5",
+            "url": "Bakuman_manga_cover.jpg"
+        },
+        {
+            "name": "Black Clover",
+            "description": "lorem skg ksg skdjgh skoes sodoodgk sdjgj sdfghsdg sdgsdhj ejdfj dfj dr345345j",
+            "score": "4.7",
+            "url": "BlackClover_cover.webp"
+        },
+        {
+            "name": "Tokyo ghoul",
+            "description": "lorem skg ksg skdjgh skoes sodoodgk sdjgj sdfghsdg sdgsdhj ejdfj dfj dr36435634573363465j",
+            "score": "4.8",
+            "url": "TokyoGhoul_manga_cover.jpg"
+        },
+        {
+            "name": "Onepunchman",
+            "description": "lorem skg ksg skdjgh skoes sodoodgk sdjgj sdf  sdf s sdf sdfghsdg sdgsdfsdhj ejdfj dsdffjsdf dr36435634573363465j",
+            "score": "4.8",
+            "url": "OnePunchMan_manga_cover.png"
+        },
+        {
+            "name": "Player",
+            "description": "lorem skg ksg skdjgh skoes sodoodgk sdjgj sdf  sdf s sdf sdfghsdg sdgsdfsdhj ejdfj dsdffjsdf dr36435634573363465j",
+            "score": "4.8",
+            "url": "player.jpg"
+        },
+        {
+            "name": "Omniscient reader",
+            "description": "lorem skg ksg skdjgh skoes sodoodgk sdjgj sdf  sdf s sdf sdfghsdg sdgsdfsdhj ejdfj dsdffjsdf dr36435634573363465j",
+            "score": "4.8",
+            "url": "omniscientReader.jpg"
+        },
+        {
+            "name": "Magic and mashle",
+            "description": "lorem skg ksg skdjgh skoes sodoodgk sdjgj sdf  sdf s sdf sdfghsdg sdgsdfsdhj ejdfj dsdffjsdf dr36435634573363465j",
+            "score": "4.8",
+            "url": "magicAndMashle.jpg"
+        },
+        {
+            "name": "Solo leveling",
+            "description": "lorem skg ksg skdjgh skoes sodoodgk sdjgj sdf  sdf s sdf sdfghsdg sdgsdfsdhj ejdfj dsdffjsdf dr36435634573363465j",
+            "score": "4.8",
+            "url": "solo-leveling.jpg"
+        },
+        {
+            "name": "The world after the fall",
+            "description": "lorem skg ksg skdjgh skoes sodoodgk sdjgj sdf  sdf s sdf sdfghsdg sdgsdfsdhj ejdfj dsdffjsdf dr36435634573363465j",
+            "score": "4.8",
+            "url": "theWorldAfterTheFall.jpg"
+        },
+        {
+            "name": "Tower of god",
+            "description": "lorem skg ksg skdjgh skoes sodoodgk sdjgj sdf  sdf s sdf sdfghsdg sdgsdfsdhj ejdfj dsdffjsdf dr36435634573363465j",
+            "score": "4.8",
+            "url": "towerOfGod.jpg"
+        }
+    
+    ]
+}

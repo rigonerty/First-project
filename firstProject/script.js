@@ -15,6 +15,7 @@ let navStatus = false
 const content = document.querySelector(".content")
 const listH = document.querySelectorAll(".listH")
 const listP = document.querySelectorAll(".listP")
+const listChilds = document.querySelectorAll(".listChild")
 const inputSearch = document.querySelector(".rightNav > input")
 const searchBlock = document.querySelector(".search")
 let searchstatus = false
@@ -68,11 +69,15 @@ window.addEventListener("resize", function () {
             web.style.marginLeft = 200 + (html.offsetWidth / 100) * 2 + 'px' 
             leftNav.style.marginLeft = "160px"
             navShow.style.visibility = "hidden"
+            content.style.filter = "blur(0)";
+            header.style.filter = "blur(0)"
         }else{
             web.style.margin = "2%"
             web.style.marginTop = "50px"
             navShow.style.visibility = "hidden"
             nav.style.opacity = "1"
+            content.style.filter = "blur(5px)";
+            header.style.filter = "blur(5px)"
         }
     }
     else{
@@ -118,11 +123,12 @@ function maxWordsTable(text, n) {
 document.addEventListener("click", function (e) {
     const withinSearch = e.composedPath().includes(searchBlock);
     const withinSearchInput = e.composedPath().includes(inputSearch)
-    if (!withinSearch && !withinSearchInput){
+    if (!withinSearch && !withinSearchInput && searchstatus){
         searchBlock.style.display = "none"
         content.style.filter = "blur(0)";
         nav.style.filter = "blur(0)"
         header.style.filter = "blur(0)"
+        searchstatus = false
     }
 })
 document.addEventListener("keydown", function (e) {
@@ -138,6 +144,7 @@ inputSearch.addEventListener( "click", function () {
     content.style.filter = "blur(5px)";
     nav.style.filter = "blur(5px)"
     header.style.filter = "blur(5px)"
+    searchstatus = true 
 })
 theme.addEventListener("click", function () {
     if(statusTheme){
@@ -177,23 +184,26 @@ navClose.addEventListener("click", function () {
         setTimeout(function () {
             nav.style.opacity = "0"
         },600)
-    
+        content.style.filter = "blur(0)";
+        header.style.filter = "blur(0)"
     navStatus = false
     
 })
 navShow.addEventListener("click", function () {
     if (windowInnerWidth >= 820) {
-        nav.style.left = "0%"
-        nav.style.opacity = "1"
-        content.style.marginLeft = 200 + (body.offsetWidth/100)*2 + "px" 
-        leftNav.style.marginLeft = "160px"
-        navShow.style.visibility = "hidden"
+        nav.style.left = "0%";
+        nav.style.opacity = "1";
+        content.style.marginLeft = 200 + (body.offsetWidth/100)*2 + "px" ;
+        leftNav.style.marginLeft = "160px";
+        navShow.style.visibility = "hidden";
     }else{
-        nav.style.left = "0%"
-        content.style.margin = "2%"
-        web.style.marginTop = 50 + "px"
-        navShow.style.visibility = "hidden"
-        nav.style.opacity = "1"
+        nav.style.left = "0%";
+        content.style.margin = "2%";
+        web.style.marginTop = 50 + "px";
+        navShow.style.visibility = "hidden";
+        nav.style.opacity = "1";
+        content.style.filter = "blur(5px)";
+        header.style.filter = "blur(5px)"
     }
     navStatus = true
 })
@@ -369,3 +379,30 @@ slider2s.addEventListener( "touchstart",function (e) {
         
     }
 })
+
+
+
+
+
+const TestJson = document.querySelector("#TestJson")
+
+fetch("main.json").then(function (response) {
+    return response.json()
+}).then(function (json) {
+    initialize(json)
+})
+
+
+
+
+function initialize(json){
+    console.log(454)
+    for (let i = 0; i < listChilds.length; i++) {
+        listChilds[i].innerHTML = `<img src="/img/manga/cover/${json.titles[i].url}" alt="">
+                                    <div>
+                                        <h2 class="listH">${json.titles[i].name}</h2>
+                                        <p class="listP">${json.titles[i].description}</p>
+                                    </div>`
+        
+    }
+}
