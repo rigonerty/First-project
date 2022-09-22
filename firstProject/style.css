@@ -170,6 +170,11 @@ header{
 .rightNav input:focus{
     outline: 1px solid var(--red);
 }
+#logo {
+    width: 80px;
+    height: auto;
+    margin-left: 20px;
+}
 .slider1{
     position: relative;
     width: 100%;
@@ -252,11 +257,14 @@ header{
     object-fit: contain;
 }
 .listChild div{ margin-left: 3%; margin-top: -5%;}
-.listChild{
-    border: 1px solid transparent;
+
+.listChild a {
     display: flex;
+    border: 1px solid transparent;
     align-items: center;
     margin-top: 20px;
+    color: var(--font-color);
+    text-decoration: none;
 }
 .listChild:hover{ cursor: pointer; }
 .topList .topListLeft:first-child,
