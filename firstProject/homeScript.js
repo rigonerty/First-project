@@ -243,7 +243,7 @@ fetch("main.json").then(function (response) {
 function initialize(json){
     console.log(454)
     for (let i = 0; i < listChilds.length; i++) {
-        listChilds[i].innerHTML = `<a href = "/network/manga/${(json.titles[i].name).replace(" ", "")}.html"><img src="/img/manga/cover/${json.titles[i].url}" alt="">
+        listChilds[i].innerHTML = `<a href = "./network/manga/${(json.titles[i].name).replace(" ", "")}.html"><img src="/img/manga/cover/${json.titles[i].url}" alt="">
                                     <div>
                                         <h2 class="listH">${maxWordsTable1(json.titles[i].name, 20)}</h2>
                                         <p class="listP">${maxWordsTable1(json.titles[i].description, 270)}</p>
