@@ -319,6 +319,7 @@ function ShowSlider1(blob, product){
     image.alt = product.name
     h2.innerHTML = maxWordsTable1(product.name, sliderHeadL)
     p.innerHTML = maxWordsTable1(product.description, sliderTextL)
+    a.href = `/My-projects/firstProject/network/manga/${product.name.replace(" ", "")}.html`
     divImg.appendChild(image)
     h2.classList.add("sliderHead")
     p.classList.add("sliderText")
