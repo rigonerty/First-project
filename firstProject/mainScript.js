@@ -108,8 +108,8 @@ theme.addEventListener("click", function () {
         root.style.setProperty("--background-color", "rgb(245,245,245)")
         root.style.setProperty("--color-header", "white")
         statusTheme = true
-        theme.src = "/img/icon/sun.png"
-        logo.src = "/img/logo/logo1.gif"
+        theme.src = "/My-projects/firtsProject/img/icon/sun.png"
+        logo.src = "/My-projects/firtsProject/img/logo/logo1.gif"
     }
 
 })
