@@ -96,8 +96,8 @@ theme.addEventListener("click", function () {
         root.style.setProperty("--a-hover", "#333333")
         root.style.setProperty("--a-active", "#202020")
         root.style.setProperty("--color-header", "black")
-        theme.src = "/img/icon/moon.png"
-        logo.src = "/img/logo/logo2.gif"
+        theme.src = "/My-projects/firtsProject/img/icon/moon.png"
+        logo.src = "/My-projects/firtsProject/img/logo/logo2.gif"
         statusTheme = false
     } else {
         html.style.backgroundColor = rootStyle.getPropertyValue("--white")
