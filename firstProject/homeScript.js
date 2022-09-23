@@ -264,7 +264,7 @@ function ShowList(blob,product){
     div.appendChild(p)
     a.appendChild(image)
     a.appendChild(div)
-    a.href = `./network/manga/${product.name.replace(" ","")}.html`
+    a.href = `network/manga/${product.name.replace(" ","")}.html`
     divChild.appendChild(a)
     if (leftCountList < 5){
         leftList.appendChild(divChild)
@@ -275,7 +275,7 @@ function ShowList(blob,product){
 }
 function blobImgList(products) {
     for(const product of products){
-        const url = `./img/manga/cover/${product.url}`
+        const url = `img/manga/cover/${product.url}`
         fetch(url).then(function (response) {
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`)
@@ -291,7 +291,7 @@ function blobImgList(products) {
 }
 function blobImgSlider1(products) {
     for (const product of products) {
-        const url = `./img/manga/banner/${product.banner}`
+        const url = `img/manga/banner/${product.banner}`
         fetch(url).then(function (response) {
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`)
