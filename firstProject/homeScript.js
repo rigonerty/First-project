@@ -35,7 +35,7 @@ if (windowInnerWidth < 600) {
 if (windowInnerWidth < 800) {
     maxLenghtSlider = 75
 }
-if (windowInnerWidth > 1200) {
+if (windowInnerWidth > 1325) {
     sliderTextL = 1200
 }
 if (windowInnerWidth > 1530) {
@@ -171,6 +171,7 @@ slider1s.ondragstart = function () {
 
 
 
+
 slider2s.onmousedown = function (e) {
     let slider2Width = content.offsetWidth;
     let currentSlider2 = 0
@@ -234,7 +235,8 @@ slider2s.addEventListener( "touchstart",function (e) {
 fetch("main.json").then(function (response) {
     return response.json()
 }).then(function (json) {
-    blobImg(json)
+    blobImgList(json)
+    blobImgSlider1(json)
 })
 
 
@@ -271,8 +273,7 @@ function ShowList(blob,product){
         rightList.appendChild(divChild)
     }
 }
-function blobImg(products) {
-    console.log(products)
+function blobImgList(products) {
     for(const product of products){
         const url = `/img/manga/cover/${product.url}`
         fetch(url).then(function (response) {
@@ -288,10 +289,57 @@ function blobImg(products) {
     
         
 }
+function blobImgSlider1(products) {
+    for (const product of products) {
+        const url = `/img/manga/banner/${product.banner}`
+        fetch(url).then(function (response) {
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`)
+                
+            } else {
+                response.blob().then(function (blob) {
+                ShowSlider1(blob, product)
+                })
+            }
+        })
+    }
+}
+
+function ShowSlider1(blob, product){
+    const urlObject = URL.createObjectURL(blob)
+    const image = document.createElement("img")
+    const divImg = document.createElement("div")
+    const divText = document.createElement("div")
+    const h2 = document.createElement("h2")
+    const p = document.createElement("p")
+    const divChild = document.createElement("div");
+    const a = document.createElement("a");
+    
+    image.src = urlObject
+    image.alt = product.name
+    h2.innerHTML = maxWordsTable1(product.name, sliderHeadL)
+    p.innerHTML = maxWordsTable1(product.description, sliderTextL)
+    divImg.appendChild(image)
+    h2.classList.add("sliderHead")
+    p.classList.add("sliderText")
+    divChild.classList.add("sliderChild")
+    divImg.classList.add("sliderImg")
+    divText.classList.add("sliderP")
+    divText.appendChild(h2)
+    divText.appendChild(p)
+    a.appendChild(divImg)
+    a.appendChild(divText)
+    divChild.appendChild(a)
+    slider1.appendChild(divChild)
+}
 
 
-for (let i = 0; i < sliderText.length; i++) { sliderText[i].innerHTML = maxWordsTable(sliderText[i], sliderTextL) }
-for (let i = 0; i < sliderHead.length; i++) { sliderHead[i].innerHTML = maxWordsTable(sliderHead[i], sliderHeadL) }
+
+
+
+
+
+
 for (let i = 0; i < slider2H.length; i++) { slider2H[i].innerHTML = maxWordsTable(slider2H[i], 25) }
 for (let i = 0; i < slider2P.length; i++) { slider2P[i].innerHTML = maxWordsTable(slider2P[i], 200) }
 function maxWordsTable(text, n) {

@@ -29,14 +29,14 @@ window.addEventListener("resize", function () {
         if (windowInnerWidth >= 820) {
             nav.style.left = "0%"
             nav.style.opacity = "1"
-            web.style.marginLeft = 200 + (html.offsetWidth / 100) * 2 + 'px'
+            content.style.marginLeft = 200 + (html.offsetWidth / 100) * 2 + 'px'
             leftNav.style.marginLeft = "160px"
             navShow.style.visibility = "hidden"
             content.style.filter = "blur(0)";
             header.style.filter = "blur(0)"
         } else {
-            web.style.margin = "2%"
-            web.style.marginTop = "50px"
+            content.style.margin = "2%"
+            content.style.marginTop = "50px"
             navShow.style.visibility = "hidden"
             nav.style.opacity = "1"
             content.style.filter = "blur(5px)";

@@ -199,9 +199,13 @@ header{
 .sliderChild{
     user-select: none;
     pointer-events: none;
-    display: flex;
     height: auto;
     min-width: 100%;
+}
+.sliderChild a {
+    display: flex;
+    text-decoration: none;
+    color: white
 }
 .slider1s:last-child{
     margin-right: 0;
@@ -397,6 +401,7 @@ header{
 }
 .contentChild h5{
     margin-top: 0px;
+    color: var(--font-color);
 }
 .searchContent img{
     width: 120px;
