@@ -229,29 +229,65 @@ slider2s.addEventListener( "touchstart",function (e) {
 
 
 
-const TestJson = document.querySelector("#TestJson")
+// const TestJson = document.querySelector("#TestJson")
 
 fetch("main.json").then(function (response) {
     return response.json()
 }).then(function (json) {
-    initialize(json)
+    blobImg(json)
 })
 
 
 
 
-function initialize(json){
-    console.log(454)
-    for (let i = 0; i < listChilds.length; i++) {
-        listChilds[i].innerHTML = `<a href = "./network/manga/${(json.titles[i].name).replace(" ", "")}.html"><img src="/img/manga/cover/${json.titles[i].url}" alt="">
-                                    <div>
-                                        <h2 class="listH">${maxWordsTable1(json.titles[i].name, 20)}</h2>
-                                        <p class="listP">${maxWordsTable1(json.titles[i].description, 270)}</p>
-                                    </div></a>`
-        
+let leftCountList = 0;
+const rightList = document.querySelector(".topListRight")
+const leftList = document.querySelector(".topListLeft")
+function ShowList(blob,product){
+    const urlObject = URL.createObjectURL(blob)
+    const image = document.createElement("img")
+    const div = document.createElement("div")
+    const h2 = document.createElement("h2")
+    const p = document.createElement("p")
+    const divChild = document.createElement("div");
+    const a = document.createElement("a");
+    h2.classList.add("listH");
+    p.classList.add("listP");
+    divChild.classList.add("listChild");
+    image.src = urlObject;
+    image.alt = product.name
+    h2.innerHTML = maxWordsTable1(product.name, 25)
+    p.innerHTML = maxWordsTable1(product.description, 250)
+    div.appendChild(h2)
+    div.appendChild(p)
+    a.appendChild(image)
+    a.appendChild(div)
+    a.href = `/network/manga/${product.name.replace(" ","")}.html`
+    divChild.appendChild(a)
+    if (leftCountList < 5){
+        leftList.appendChild(divChild)
+        leftCountList++
+    }else{
+        rightList.appendChild(divChild)
     }
 }
-
+function blobImg(products) {
+    console.log(products)
+    for(const product of products){
+        const url = `/img/manga/cover/${product.url}`
+        fetch(url).then(function (response) {
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`)
+            } else {
+                return response.blob()
+            }
+        }).then(function (blob) {
+            ShowList(blob, product)
+        })
+    }
+    
+        
+}
 
 
 for (let i = 0; i < sliderText.length; i++) { sliderText[i].innerHTML = maxWordsTable(sliderText[i], sliderTextL) }

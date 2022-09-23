@@ -21,24 +21,7 @@ const logo = document.querySelector("#logo")
 
 
 
-if (windowInnerWidth < 400) {
-    maxLenghtSlider = 50
-}
-if (windowInnerWidth < 600) {
-    sliderHeadL = 10
-}
-if (windowInnerWidth < 800) {
-    maxLenghtSlider = 75
-}
-if (windowInnerWidth > 1200) {
-    sliderTextL = 1200
-}
-if (windowInnerWidth > 1530) {
-    sliderTextL = 1000
-}
-if (windowInnerWidth > 2500) {
-    sliderTextL = 2000
-}
+
 window.addEventListener("resize", function () {
     windowInnerWidth = window.innerWidth
     windowInnerHeight = window.innerHeight
@@ -114,7 +97,7 @@ theme.addEventListener("click", function () {
         root.style.setProperty("--a-active", "#202020")
         root.style.setProperty("--color-header", "black")
         theme.src = "/img/icon/moon.png"
-        logo.src = "./img/logo/logo2.gif"
+        logo.src = "/img/logo/logo2.gif"
         statusTheme = false
     } else {
         html.style.backgroundColor = rootStyle.getPropertyValue("--white")
@@ -126,7 +109,7 @@ theme.addEventListener("click", function () {
         root.style.setProperty("--color-header", "white")
         statusTheme = true
         theme.src = "/img/icon/sun.png"
-        logo.src = "./img/logo/logo1.gif"
+        logo.src = "/img/logo/logo1.gif"
     }
 
 })
