@@ -353,7 +353,7 @@ function ShowSlider1(blob, product){
     image.alt = product.name
     h2.innerHTML = maxWordsTable1(product.name, sliderHeadL)
     p.innerHTML = maxWordsTable1(product.description, sliderTextL)
-    a.href = `/network/manga/${product.name.replace(" ","")}.html`
+    a.href = `/My-projects/firstProject/network/manga/${product.name.replace(" ","")}.html`
     divImg.appendChild(image)
     h2.classList.add("sliderHead")
     p.classList.add("sliderText")
@@ -370,7 +370,7 @@ function ShowSlider1(blob, product){
 }
 function blobImgSlider2(products){
     for(const product of products){
-        const url = `/img/manga/cover/${product.url}`
+        const url = `/My-projects/firstProject/img/manga/cover/${product.url}`
         fetch(url).then(function (response) {
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`)
@@ -396,7 +396,7 @@ function  ShowSlider2(blob, product) {
     p.classList.add("slider2P")
     h2.innerHTML = maxWordsTable1(product.name, 25)
     p.innerHTML = maxWordsTable1(product.description, 200)
-    a.href = `/network/manga/${product.name.replace(" ", "")}.html`
+    a.href = `/My-projects/firstProject/network/manga/${product.name.replace(" ", "")}.html`
     image.src = urlObject
     div.appendChild(h2)
     div.appendChild(p)
