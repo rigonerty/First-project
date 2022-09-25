@@ -34,7 +34,7 @@
 	left: -20px;
 	right: 0;
 	bottom: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/img/manga/banner/BlackClover.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/My-projects/firstProject/img/manga/banner/BlackClover.jpg);
     background-size: cover;
     background-position: 0% 25%;
     z-index: -1;
