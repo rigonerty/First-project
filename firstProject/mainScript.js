@@ -153,8 +153,8 @@ theme.addEventListener("click", function () {
         root.style.setProperty("--a-hover", "#333333")
         root.style.setProperty("--a-active", "#202020")
         root.style.setProperty("--color-header", "black")
-        theme.src = "/img/icon/moon.png"
-        logo.src = "/img/logo/logo2.gif"
+        theme.src = "/My-projects/firstProject/img/icon/moon.png"
+        logo.src = "/My-projects/firstProject/img/logo/logo2.gif"
         statusTheme = false
     } else {
         html.style.backgroundColor = rootStyle.getPropertyValue("--white")
@@ -165,8 +165,8 @@ theme.addEventListener("click", function () {
         root.style.setProperty("--background-color", "rgb(245,245,245)")
         root.style.setProperty("--color-header", "white")
         statusTheme = true
-        theme.src = "/img/icon/sun.png"
-        logo.src = "/img/logo/logo1.gif"
+        theme.src = "/My-projects/firstProject/img/icon/sun.png"
+        logo.src = "/My-projects/firstProject/img/logo/logo1.gif"
     }
 
 })
