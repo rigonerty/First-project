@@ -265,7 +265,7 @@ function showBlobImgBack(blob, product){
 }
 
 
-commentTextArea.setAttribute('style', 'height:' + (commentTextArea.scrollHeight) + 'px;overflow-y:hidden;');
+commentTextArea.setAttribute('style', 'height:' + 33 + 'px;overflow-y:hidden;');
 commentTextArea.addEventListener("input", OnInput, false); 
 function OnInput() {
     this.style.height = 'auto';
