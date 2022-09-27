@@ -160,8 +160,8 @@ theme.addEventListener("click", function () {
         root.style.setProperty("--a-hover", "#333333")
         root.style.setProperty("--a-active", "#202020")
         root.style.setProperty("--color-header", "black")
-        theme.src = "/img/icon/moon.png"
-        logo.src = "/img/logo/logo2.gif"
+        theme.src = "/My-projects/firstProject/img/icon/moon.png"
+        logo.src = "/My-projects/firstProject/img/logo/logo2.gif"
         statusTheme = false
     } else {
         html.style.backgroundColor = rootStyle.getPropertyValue("--white")
@@ -172,8 +172,8 @@ theme.addEventListener("click", function () {
         root.style.setProperty("--background-color", "rgb(245,245,245)")
         root.style.setProperty("--color-header", "white")
         statusTheme = true
-        theme.src = "/img/icon/sun.png"
-        logo.src = "/img/logo/logo1.gif"
+        theme.src = "/My-projects/firstProject/img/icon/sun.png"
+        logo.src = "/My-projects/firstProject/img/logo/logo1.gif"
     }
 
 })
@@ -235,7 +235,7 @@ function maxWordsTable(text, n) {
 
 
 
-fetch("/main.json").then(function (response) {
+fetch("/My-projects/firstProject/main.json").then(function (response) {
     return response.json()
 }).then(function (json) {
     blobImgHead(json)
@@ -245,7 +245,7 @@ fetch("/main.json").then(function (response) {
 function blobImgHead(products){
     for (const product of products){
         if(title.innerHTML == product.name){
-            let url = `/img/manga/cover/${product.url}`
+            let url = `/My-projects/firstProject/img/manga/cover/${product.url}`
             fetch(url).then(function (response) {
                 if(!response.ok){
                     throw new Error(`HTTP error: ${response.status}`)
@@ -266,7 +266,7 @@ function showBlobImg(blob, product){
 function blobImgBackHead(products){
     for(const product of products){
         if (title.innerHTML == product.name) {
-            let url = `/img/manga/banner/${product.banner}`
+            let url = `/My-projects/firstProject/img/manga/banner/${product.banner}`
             fetch(url).then(function (response) {
                 if (!response.ok) {
                     throw new Error(`HTTP error: ${response.status}`)
