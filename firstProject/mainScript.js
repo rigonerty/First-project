@@ -45,37 +45,7 @@ const statusT = document.querySelector("#statusT")
 
 
 
-function OnInput() {
-    this.style.height = 'auto';
-    this.style.height = (this.scrollHeight) + 'px';
-}
-commentSend.onclick = function () {
-    const img = document.createElement("img")
-    const div1 = document.createElement("div")
-    const div2 = document.createElement("div")
-    const div3 = document.createElement("div")
-    const p = document.createElement("p")
-    const span = document.createElement("span")
-    const button1 = document.createElement("button")
-    const button2 = document.createElement("button")
-    const h3 = document.createElement("h3")
-    div1.classList.add("comment")
-    span.innerHTML = `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()} / ${new Date().getHours()}:${new Date().getMinutes()}`
-    button1.innerHTML = "answer"
-    button2.innerHTML = "complain"
-    p.innerHTML = commentTextArea.value
-    commentTextArea.value = ""
-    h3.innerHTML = "NAME"
-    div2.appendChild(img)
-    div2.appendChild(h3)
-    div2.appendChild(span)
-    div3.appendChild(button1)
-    div3.appendChild(button2)
-    div1.appendChild(div2)
-    div1.appendChild(p)
-    div1.appendChild(div3)
-    TitleCommentsContent.prepend(div1)
-}
+
 
 
 
@@ -297,3 +267,34 @@ function showBlobImgBack(blob, product){
 
 commentTextArea.setAttribute('style', 'height:' + (commentTextArea.scrollHeight) + 'px;overflow-y:hidden;');
 commentTextArea.addEventListener("input", OnInput, false); 
+function OnInput() {
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight) + 'px';
+}
+commentSend.onclick = function () {
+    const img = document.createElement("img")
+    const div1 = document.createElement("div")
+    const div2 = document.createElement("div")
+    const div3 = document.createElement("div")
+    const p = document.createElement("p")
+    const span = document.createElement("span")
+    const button1 = document.createElement("button")
+    const button2 = document.createElement("button")
+    const h3 = document.createElement("h3")
+    div1.classList.add("comment")
+    span.innerHTML = `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()} / ${new Date().getHours()}:${new Date().getMinutes()}`
+    button1.innerHTML = "answer"
+    button2.innerHTML = "complain"
+    p.innerHTML = commentTextArea.value
+    commentTextArea.value = ""
+    h3.innerHTML = "NAME"
+    div2.appendChild(img)
+    div2.appendChild(h3)
+    div2.appendChild(span)
+    div3.appendChild(button1)
+    div3.appendChild(button2)
+    div1.appendChild(div2)
+    div1.appendChild(p)
+    div1.appendChild(div3)
+    TitleCommentsContent.prepend(div1)
+}
