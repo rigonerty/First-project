@@ -42,10 +42,8 @@ const statusT = document.querySelector("#statusT")
 
 
 
-window.onload = function(){
-    commentTextArea.setAttribute('style', 'height:' + (commentTextArea.scrollHeight) + 'px;overflow-y:hidden;');
-    commentTextArea.addEventListener("input", OnInput, false); 
-}
+
+
 
 function OnInput() {
     this.style.height = 'auto';
@@ -295,3 +293,7 @@ function showBlobImgBack(blob, product){
     titleInfoH2.innerHTML = product.name
     titleInfoH2.title = product.name
 }
+
+
+commentTextArea.setAttribute('style', 'height:' + (commentTextArea.scrollHeight) + 'px;overflow-y:hidden;');
+commentTextArea.addEventListener("input", OnInput, false); 
