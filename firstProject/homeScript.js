@@ -264,7 +264,7 @@ slider2s.ontouchstart = function (e) {
 
 // const TestJson = document.querySelector("#TestJson")
 
-fetch("main.json").then(function (response) {
+fetch("/My-projects/firstProject/main.json").then(function (response) {
     return response.json()
 }).then(function (json) {
     blobImgList(json)
