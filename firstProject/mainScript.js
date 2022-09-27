@@ -42,9 +42,11 @@ const statusT = document.querySelector("#statusT")
 
 
 
+window.onload = function(){
+    commentTextArea.setAttribute('style', 'height:' + (commentTextArea.scrollHeight) + 'px;overflow-y:hidden;');
+    commentTextArea.addEventListener("input", OnInput, false); 
+}
 
-commentTextArea.setAttribute('style', 'height:' + (commentTextArea.scrollHeight) + 'px;overflow-y:hidden;');
-commentTextArea.addEventListener("input", OnInput, false);
 function OnInput() {
     this.style.height = 'auto';
     this.style.height = (this.scrollHeight) + 'px';
