@@ -267,7 +267,7 @@ slider2s.ontouchstart = function (e) {
 
 // const TestJson = document.querySelector("#TestJson")
 
-fetch("main.json").then(function (response) {
+fetch("/My-projects/firstProject/main.json").then(function (response) {
     return response.json()
 }).then(function (json) {
     blobImgList(json)
@@ -300,7 +300,7 @@ function ShowList(blob,product){
     div.appendChild(p)
     a.appendChild(image)
     a.appendChild(div)
-a.href = `/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "")}.html`
+a.href = `/My-projects/firstProject/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "")}.html`
     divChild.appendChild(a)
     if (leftCountList < 5){
         leftList.appendChild(divChild)
@@ -311,7 +311,7 @@ a.href = `/network/manga/${product.name.replaceAll(" ", "")}/${product.name.repl
 }
 function blobImgList(products) {
     for(const product of products){
-        const url = `/img/manga/cover/${product.url}`
+        const url = `/My-projects/firstProject/img/manga/cover/${product.url}`
         fetch(url).then(function (response) {
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`)
@@ -327,7 +327,7 @@ function blobImgList(products) {
 }
 function blobImgSlider1(products) {
     for (const product of products) {
-        const url = `/img/manga/banner/${product.banner}`
+        const url = `/My-projects/firstProject/img/manga/banner/${product.banner}`
         fetch(url).then(function (response) {
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`)
@@ -355,7 +355,7 @@ function ShowSlider1(blob, product){
     image.alt = product.name
     h2.innerHTML = maxWordsTable1(product.name, sliderHeadL)
     p.innerHTML = maxWordsTable1(product.description, sliderTextL)
-    a.href = `/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "")}.html`
+    a.href = `/My-projects/firstProject/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "")}.html`
     divImg.appendChild(image)
     h2.classList.add("sliderHead")
     p.classList.add("sliderText")
@@ -372,7 +372,7 @@ function ShowSlider1(blob, product){
 }
 function blobImgSlider2(products){
     for(const product of products){
-        const url = `/img/manga/cover/${product.url}`
+        const url = `/My-projects/firstProject/img/manga/cover/${product.url}`
         fetch(url).then(function (response) {
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`)
@@ -398,7 +398,7 @@ function  ShowSlider2(blob, product) {
     p.classList.add("slider2P")
     h2.innerHTML = maxWordsTable1(product.name, 25)
     p.innerHTML = maxWordsTable1(product.description, 200)
-    a.href = `/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "")}.html`
+    a.href = `/My-projects/firstProject/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "")}.html`
     image.src = urlObject
     div.appendChild(h2)
     div.appendChild(p)
