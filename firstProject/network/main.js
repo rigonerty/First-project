@@ -56,7 +56,7 @@ commentSend.onclick = function () {
     div1.appendChild(div3)
     TitleCommentsContent.prepend(div1)
 }
-fetch("/main.json").then(function (response) {
+fetch("/My-projects/firstProject/main.json").then(function (response) {
     return response.json()
 }).then(function (json) {
     blobImgHead(json)
@@ -66,7 +66,7 @@ fetch("/main.json").then(function (response) {
 function blobImgHead(products) {
     for (const product of products) {
         if (title.innerHTML == product.name) {
-            let url = `/img/manga/cover/${product.url}`
+            let url = `/My-projects/firstProject/img/manga/cover/${product.url}`
             fetch(url).then(function (response) {
                 if (!response.ok) {
                     throw new Error(`HTTP error: ${response.status}`)
@@ -87,7 +87,7 @@ function showBlobImg(blob, product) {
 function blobImgBackHead(products) {
     for (const product of products) {
         if (title.innerHTML == product.name) {
-            let url = `/img/manga/banner/${product.banner}`
+            let url = `/My-projects/firstProject/img/manga/banner/${product.banner}`
             fetch(url).then(function (response) {
                 if (!response.ok) {
                     throw new Error(`HTTP error: ${response.status}`)
