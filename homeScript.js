@@ -88,7 +88,7 @@ slider1s.onmousedown = function (e) {
     }
     let slider1Width = slider1s.offsetWidth
     let clientX1 = e.pageX;
-    slider1.style.transition = "none"
+    slider1.style.transition = ".1s"
     currentX = 0
     document.onmousemove = function (e) {
         for (let i = 0; i < a.length; i++) {
@@ -233,30 +233,53 @@ slider2s.ontouchstart = function (e) {
     currentSlider2 = 0
     let clientX = e.changedTouches[0].pageX;
     const a = document.querySelectorAll(".slider2Child > a")
+    const startTime = new Date().getTime()
     for (let i = 0; i < a.length; i++) {
         
         a[i].onclick = function () { return true }
     }
+    let endTimeMove;
     document.ontouchmove = function (e) {
         let clientX1 = e.changedTouches[0].pageX;
-        currentSlider2 = clientX1 - clientX
+        currentSlider2 = clientX1 - clientX;
+        slider2.style.transition = "none" 
+        endTimeMove = new Date().getTime()
         for (let i = 0; i < a.length; i++) { a[i].onclick = function () { return false } }
-        if (currentSlider2 + currentXSlider2 > 0) {
+        if ((currentXSlider2 + currentSlider2) > 0) {
             currentSlider2 = 0
             currentXSlider2 = 0
         }
-        if (-(420 * slider2Child.length - slider2Width) > currentXSlider2 + currentSlider2) {
+        else if (-(420 * slider2Child.length - slider2Width + 2) > (currentXSlider2 + currentSlider2)) {
+            currentXSlider2 = -(420 * slider2Child.length - slider2Width + 2)
+            currentSlider2 = 0
             slider2.style.transform = "translate(-" + (420 * slider2Child.length - slider2Width + 2) + "px)"
         } else {
-            slider2.style.transform = "translate(" + (currentSlider2 + currentXSlider2) + "px)"
+            slider2.style.transform = "translate(" + (currentXSlider2 + currentSlider2) + "px)"
         }
-
     }
     document.ontouchend =  function () {
+        slider2.style.transition = ".8s"
+        slider2.style.transitionTimingFunction = "ease-out"
+        const endTime = new Date().getTime()
+        let speed = Math.round((currentSlider2) / (endTime - startTime) * 150)
+        if (endTime - endTimeMove > 100){
+            speed = 0
+        }
+        if ((speed + currentXSlider2 + currentSlider2) > 0) {
+            slider2.style.transform = "translate(-" + 0 + "px)"
+        }
+        else if (-(420 * slider2Child.length - slider2Width) > (speed + currentXSlider2 + currentSlider2)) {
+            slider2.style.transform = "translate(-" + (420 * slider2Child.length - slider2Width + 2) + "px)"
+        } else {
+            slider2.style.transform = "translate(" + (speed + currentXSlider2 + currentSlider2) + "px)"
+        }
+
+
+
         document.ontouchmove = null
         slider1s.ontouchend = null
         document.ontouchend  = null
-        currentXSlider2 = currentSlider2 + currentXSlider2
+        currentXSlider2 = Math.round((currentSlider2) / (endTime - startTime) * 150) + currentXSlider2 + currentSlider2
         
     }
 }
@@ -267,7 +290,7 @@ slider2s.ontouchstart = function (e) {
 
 // const TestJson = document.querySelector("#TestJson")
 
-fetch("/My-projects/main.json").then(function (response) {
+fetch("main.json").then(function (response) {
     return response.json()
 }).then(function (json) {
     blobImgList(json)
@@ -300,7 +323,7 @@ function ShowList(blob,product){
     div.appendChild(p)
     a.appendChild(image)
     a.appendChild(div)
-a.href = `/My-projects/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "")}.html`
+a.href = `/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "")}.html`
     divChild.appendChild(a)
     if (leftCountList < 5){
         leftList.appendChild(divChild)
@@ -311,7 +334,7 @@ a.href = `/My-projects/network/manga/${product.name.replaceAll(" ", "")}/${produ
 }
 function blobImgList(products) {
     for(const product of products){
-        const url = `/My-projects/img/manga/cover/${product.url}`
+        const url = `/img/manga/cover/${product.url}`
         fetch(url).then(function (response) {
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`)
@@ -327,7 +350,7 @@ function blobImgList(products) {
 }
 function blobImgSlider1(products) {
     for (const product of products) {
-        const url = `/My-projects/img/manga/banner/${product.banner}`
+        const url = `/img/manga/banner/${product.banner}`
         fetch(url).then(function (response) {
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`)
@@ -355,7 +378,7 @@ function ShowSlider1(blob, product){
     image.alt = product.name
     h2.innerHTML = maxWordsTable1(product.name, sliderHeadL)
     p.innerHTML = maxWordsTable1(product.description, sliderTextL)
-    a.href = `/My-projects/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "")}.html`
+    a.href = `/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "")}.html`
     divImg.appendChild(image)
     h2.classList.add("sliderHead")
     p.classList.add("sliderText")
@@ -372,7 +395,7 @@ function ShowSlider1(blob, product){
 }
 function blobImgSlider2(products){
     for(const product of products){
-        const url = `/My-projects/img/manga/cover/${product.url}`
+        const url = `/img/manga/cover/${product.url}`
         fetch(url).then(function (response) {
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`)
@@ -398,7 +421,7 @@ function  ShowSlider2(blob, product) {
     p.classList.add("slider2P")
     h2.innerHTML = maxWordsTable1(product.name, 25)
     p.innerHTML = maxWordsTable1(product.description, 200)
-    a.href = `/My-projects/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "")}.html`
+    a.href = `/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "")}.html`
     image.src = urlObject
     div.appendChild(h2)
     div.appendChild(p)
