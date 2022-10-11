@@ -28,7 +28,7 @@ ButtonsChapterContent.style.display = "none"
 const settingChapterCountUl = document.querySelector("#settingChapterCountUl")
 const settingChapterCountDiv = document.querySelector("#settingChapterCountDiv")
 let settingNumberPageCountLi = document.querySelectorAll("#settingNumberPageCount > li")
-fetch("/main.json").then(function (response) {
+fetch("/My-projects/main.json").then(function (response) {
     if(!response.ok){
         throw new Error(`HTTP error: ${response.status}`)
     }else{
@@ -169,7 +169,7 @@ function Href(href){
 }
 
 
-setting.style.background = "url(/img/icon/Orion_setting.svg)"
+setting.style.background = "url(/My-projects/img/icon/Orion_setting.svg)"
 setting.style.backgroundSize = "25px 25px"
 setting.style.backgroundRepeat = "no-repeat"
 setting.style.backgroundPosition = "center"
@@ -182,7 +182,7 @@ window.addEventListener("resize", function () {
 
 theme.addEventListener("click", function () {
     if (statusTheme) {
-        setting.style.background = "url(/img/icon/Orion_setting.svg)";
+        setting.style.background = "url(/My-projects/img/icon/Orion_setting.svg)";
         setting.style.backgroundSize = "25px 25px"
         setting.style.backgroundRepeat = "no-repeat"
         setting.style.backgroundPosition = "center"
@@ -199,7 +199,7 @@ theme.addEventListener("click", function () {
         root.style.setProperty("--a-hoverB", "rgb(199, 199, 199)")
         root.style.setProperty("--a-activeB", "rgb(175, 175, 175)")
     } else {
-        setting.style.background = "url(/img/icon/Orion_settingWhite.svg)";
+        setting.style.background = "url(/My-projects/img/icon/Orion_settingWhite.svg)";
         setting.style.backgroundSize = "25px 25px"
         setting.style.backgroundRepeat = "no-repeat"
         setting.style.backgroundPosition = "center"
@@ -290,7 +290,7 @@ styleReading.addEventListener("click", function(){
         })
         ButtonsChapterContent.style.display = "flex"
     }
-    styleReading.style.background = `url(/img/icon/styleReading${countStyleReading}.png)`
+    styleReading.style.background = `url(/My-projects/img/icon/styleReading${countStyleReading}.png)`
     styleReading.style.backgroundSize =  "contain";
     styleReading.style.backgroundRepeat =  "no-repeat";
     styleReading.style.backgroundPosition = "center";
