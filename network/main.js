@@ -106,7 +106,7 @@ function commentContain(where, i){
     onLoad()
 }
 
-fetch("/main.json").then(function (response) {
+fetch("/My-projects/main.json").then(function (response) {
     return response.json()
 }).then(function (json) {
     blobImgHead(json)
@@ -117,7 +117,7 @@ fetch("/main.json").then(function (response) {
 function blobImgHead(products) {
     for (const product of products) {
         if (title.innerHTML == product.name) {
-            let url = `/img/manga/cover/${product.url}`
+            let url = `/My-projects/img/manga/cover/${product.url}`
             fetch(url).then(function (response) {
                 if (!response.ok) {
                     throw new Error(`HTTP error: ${response.status}`)
@@ -138,7 +138,7 @@ function showBlobImg(blob, product) {
 function blobImgBackHead(products) {
     for (const product of products) {
         if (title.innerHTML == product.name) {
-            let url = `/img/manga/banner/${product.banner}`
+            let url = `/My-projects/img/manga/banner/${product.banner}`
             fetch(url).then(function (response) {
                 if (!response.ok) {
                     throw new Error(`HTTP error: ${response.status}`)
@@ -179,7 +179,7 @@ function ChaptersLoad(chapter){
         const a = document.createElement("a")
         const h4 = document.createElement("h4")
         const span = document.createElement("span")
-        a.href = `/network/manga/${title.innerHTML.replaceAll(" ", "")}/Vol1/Chapter${chapter.number}/Chapter${chapter.number}.html`
+        a.href = `/My-projects/network/manga/${title.innerHTML.replaceAll(" ", "")}/Vol1/Chapter${chapter.number}/Chapter${chapter.number}.html`
         h4.innerHTML = `Chapter: ${chapter.number}`
         span.innerHTML = chapter.name
         a.append(h4)
