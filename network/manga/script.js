@@ -103,7 +103,7 @@ function chapterLoader(products){
     for(const product of products){
         if(product.name == title.innerHTML){
             for (let i = 0; i < product.listChapters[Href(document.location.href).replaceAll(".html", "").replaceAll("Chapter", "")].count; i++){
-                arrayChapter.push((fetch(`/network/manga/${product.name.replaceAll(" ", "")}/Vol1/${Href(document.location.href).replaceAll(".html", "")}/${(i + 1).toString().padStart(3,"0")}.jpg`).then(function (response){
+                arrayChapter.push((fetch(`/My-projects/network/manga/${product.name.replaceAll(" ", "")}/Vol1/${Href(document.location.href).replaceAll(".html", "")}/${(i + 1).toString().padStart(3,"0")}.jpg`).then(function (response){
                         if(!response.ok){
                             
                             throw new Error(`HTTP error: ${response.status}`)
