@@ -112,6 +112,11 @@ fetch("/My-projects/main.json").then(function (response) {
     blobImgHead(json)
     blobImgBackHead(json)
     Chapters(json)
+    for(const Product of json){
+        if(Product.name == title.innerHTML){
+            descriptionTitle.innerHTML = Product.description
+        }
+    }
 })
 
 function blobImgHead(products) {
@@ -141,7 +146,7 @@ function showBlobImgBack(blob, product) {
     backImage.style.background = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${urlObject})`
     backImage.style.backgroundSize = "cover";
     backImage.style.backgroundPosition = "0% 25%"
-    descriptionTitle.innerHTML = product.description
+ 
     scoreT.innerHTML = product.score;
     browseT.innerHTML = product.browse;
     chaptersT.innerHTML = product.chapters;
