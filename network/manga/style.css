@@ -1,0 +1,266 @@
+:root {
+    --white: white;
+    --black: black;
+    --red: rgb(185, 0, 0);
+    --font-color: black;
+    --color-menu: black;
+    --color-header: white;
+    --background-color: rgb(245, 245, 245);
+    --a-hover: rgb(226, 226, 226);
+    --a-active: rgb(206, 206, 206);
+    --backOnBack: rgb(221, 221, 221);
+    --a-hoverB: rgb(199, 199, 199);
+    --a-activeB: rgb(175, 175, 175);
+}
+.setting{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: fixed;
+    right: 2%;
+    top: 65px;
+    z-index: 3;
+    border: 1px solid transparent;
+    border-radius: 100%;
+}
+.setting:hover {
+    border: 1px solid var(--red);
+}
+.HeadChapter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h4 a {
+    color: var(--font-color);
+    text-decoration: none;
+}
+.ChapterContent img{
+    margin: 0 auto;
+    height: auto;
+    display: block;
+    transition: .2s;
+    transition-timing-function: linear;
+}
+.settingBlock{
+    overflow-y: auto;
+    transition: right .5s;
+    transition-timing-function: linear;
+    z-index: 3;
+    box-sizing: border-box;
+    padding-top: 60px;
+    padding-left: 2%;
+    position: fixed;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    right: -250px;
+    background: var(--background-color);
+    padding-right: 1%;
+}
+#closeSetting{
+    border: 1px solid transparent;
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-image: url(/img/icon/cross-small.png);
+    background-size:contain;
+    background-repeat:no-repeat;
+    margin-left: -15px;
+    cursor: pointer;
+    border-radius: 100%;
+    margin-left: 2px;
+}
+#closeSetting:hover{
+    border: 1px solid var(--red);
+}
+#settingWidthNumber{
+    text-align: center;
+}
+#settingWidth{
+    width: 150px;
+    position: relative;
+    left: 12%;
+}
+.styleReading{
+    display: block;
+    width: 100%;
+    height: 48px;
+    background-position: center;
+    background-image: url(/img/icon/styleReading0.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#settingBlock2{
+    margin-right: 15px;
+}
+#styleReadingSetting{
+    display: flex;
+}
+#ButtonsChapterContent{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+#ButtonsChapterContent button{
+    padding: 4px 15px;
+    text-align: center;
+    border: none;
+    background: none;
+    font-size: 1.5em;
+    color: var(--font-color);
+}
+#ButtonsChapterContent button:hover {
+    background: var(--a-hover);
+}
+#ButtonsChapterContent button:active {
+    background: var(--a-active);
+}
+#settingNumberPageDiv p{
+    padding: 0;
+    margin: 0;
+}
+#settingNumberPageDiv #settingNumberPage{
+    padding: 5px;
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+#settingNumberPageCount{
+    list-style: none;
+    padding-left: 0;
+    padding-right: 10px;
+    margin-bottom: 0;
+    overflow-y: auto;
+    height: 112px;
+}
+#settingNumberPageCount li{
+    display: block;
+    padding: 5px 15px;
+    box-sizing: border-box;
+}
+#settingNumberPageCount li:hover {
+    background-color: var(--a-hoverB);
+}
+#settingNumberPageCount li:active {
+    background-color: var(--a-activeB);
+}
+#settingNumberPageDiv{
+    transition: height .5s;
+    transition-timing-function: linear;
+    padding: 4%;
+    padding-right: 0;
+    overflow: hidden;
+    height: 46px;
+    background-color: var(--backOnBack);
+    margin: 0;
+
+}
+#settingNumberPageDiv div{
+    position: relative;
+    border: 1px solid transparent;
+    margin: -4%;
+    padding: 4%;
+    margin-right: 0;
+    height: 44px;
+    
+}
+#settingNumberPageDiv div::before{
+    transition: .6s;
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 5;
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-image: url(/img/icon/caret-down.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: right;
+}
+#settingNumberPageDiv div.rotate::before{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 35%;
+    transform: translate(0, -35%);
+    transform: rotate(180deg);
+}
+#settingNumberPageDiv div:hover{
+    border: 1px solid var(--red);
+}
+#settingChapterCountDiv{
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 2%;
+    font-size: 1.2em;
+    transition: height .5s;
+    transition-timing-function: linear;
+    overflow: hidden;
+    height: 41px;
+    background-color: var(--backOnBack);
+    margin-right: 5%;
+    margin-bottom: 10%;
+}
+#settingChapterCount{
+    position: relative;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 4%;
+}
+#settingChapterCount:hover{
+    border: 1px solid var(--red);
+}
+#settingChapterCountUl{
+    margin: 0;
+    list-style: none;
+    padding: 0 4%;
+    overflow-y: auto;
+    height: 128px;
+}
+#settingChapterCountUl li{
+    margin: 0;
+    
+}
+#settingChapterCountUl li a{
+    display: block;
+    padding: 5px;
+    font-size: 1em;
+    color: var(--font-color);
+    text-decoration: none;
+}
+#settingChapterCountUl li a:hover{
+    background-color: var(--a-hoverB);
+}
+#settingChapterCountUl li a:active {
+    background-color: var(--a-activeB);
+}
+#settingChapterCount::before {
+    transition: .6s;
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 6;
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-image: url(/img/icon/caret-down.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: right;
+}
+#settingChapterCount.rotate::before{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 23%;
+    transform: translate(0, -23%);
+    transform: rotate(180deg);
+}
