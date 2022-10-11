@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Portfolio Grid</title>
+  <desc>A solid styled icon from Orion Icon Library.</desc>
+  <path data-name="layer2"
+  fill="#ffffff" d="M0 0h16v16H0zm24 0h16v16H24zm24 0h16v16H48zM0 48h16v16H0z"></path>
+  <path data-name="layer1" fill="#ffffff" d="M24 48h16v16H24zm24 0h16v16H48z"></path>
+  <path data-name="layer2" fill="#ffffff" d="M0 23.988h16v16H0z"></path>
+  <path data-name="layer1" fill="#ffffff" d="M24 23.988h16v16H24zm24 0h16v16H48z"></path>
+</svg>
