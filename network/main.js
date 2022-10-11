@@ -135,23 +135,7 @@ function showBlobImg(blob, product) {
     const urlObject = URL.createObjectURL(blob)
     titleHeadImg.src = urlObject
 }
-function blobImgBackHead(products) {
-    for (const product of products) {
-        if (title.innerHTML == product.name) {
-            let url = `/My-projects/img/manga/banner/${product.banner}`
-            fetch(url).then(function (response) {
-                if (!response.ok) {
-                    throw new Error(`HTTP error: ${response.status}`)
-                } else {
-                    response.blob().then(function (blob) {
-                        showBlobImgBack(blob, product)
-                    })
-                }
 
-            })
-        }
-    }
-}
 function showBlobImgBack(blob, product) {
     const urlObject = URL.createObjectURL(blob)
     backImage.style.background = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${urlObject})`
@@ -204,4 +188,21 @@ function maxWordsTable(text, n) {
         textP = textP.substring(0, n) + "...";
     }
     return textP;
+}
+function blobImgBackHead(products) {
+    for (const product of products) {
+        if (title.innerHTML == product.name) {
+            let url = `/My-projects/img/manga/banner/${product.banner}`
+            fetch(url).then(function (response) {
+                if (!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`)
+                } else {
+                    response.blob().then(function (blob) {
+                        showBlobImgBack(blob, product)
+                    })
+                }
+
+            })
+        }
+    }
 }
