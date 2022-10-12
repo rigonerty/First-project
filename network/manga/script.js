@@ -221,6 +221,8 @@ document.addEventListener("click", function (e) {
     const withinSetting = e.composedPath().includes(setting)
     const withinSettingNumberPageDivDiv = e.composedPath().includes(settingNumberPageDivDiv)
     const wthinSettingChapterCount = e.composedPath().includes(settingChapterCount)
+    const withinNav = e.composedPath().includes(nav)
+    const withinNavShow = e.composedPath().includes(navShow)
     if (!withinSearch && (!withinSearchInput && !withinSearchImg) && searchstatus) {
         settingBlock.style.position = "fixed"
         settingBlock.style.display = "block"
@@ -238,6 +240,9 @@ document.addEventListener("click", function (e) {
         settingChapterCountDiv.style.height = "40px"
         settingChapterCountStatus = true
         settingChapterCount.classList.remove("rotate")
+    }
+    if (!withinNav && !withinNavShow) {
+        setting.style.filter = "blur(0)"
     }
 })
 document.addEventListener("keydown", function (e) {
@@ -328,14 +333,16 @@ navClose.addEventListener("click", function () {
 })
 navShow.addEventListener("click", function () {
     for( const img of chapterContentImg){
-        console.log(html.offsetWidth - (html.offsetWidth / 100) * 4)
-        if (img.offsetWidth + 200 > html.offsetWidth - (html.offsetWidth / 100) * 4){
-            img.style.width = img.offsetWidth- 230 + "px" 
-            settingWidth.max = html.offsetWidth - (html.offsetWidth / 100) * 4 - 230
+        if ((windowInnerWidth >= 820)) {
+            if (img.offsetWidth + 200 > html.offsetWidth - (html.offsetWidth / 100) * 4){
+                img.style.width = img.offsetWidth- 230 + "px" 
+                settingWidth.max = html.offsetWidth - (html.offsetWidth / 100) * 4 - 230
+            }
+            else{
+                img.style.width = img.offsetWidth + "px"
+            }
         }
-        else{
-            img.style.width = img.offsetWidth + "px"
-        }
+        
     }
     
 })
@@ -363,4 +370,12 @@ settingChapterCount.addEventListener("click", function () {
         settingChapterCountStatus = true
         settingChapterCount.classList.remove("rotate")
     }
+})
+navShow.addEventListener("click", function () {
+    if (!(windowInnerWidth >= 820)) {
+        setting.style.filter = "blur(5px)"
+    }
+})
+navClose.addEventListener("click", function () {
+    setting.style.filter = "blur(0)"
 })
