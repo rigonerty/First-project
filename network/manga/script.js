@@ -103,6 +103,9 @@ function chapterLoader(products){
     for(const product of products){
         if(product.name == title.innerHTML){
             for (let i = 0; i < product.listChapters[Href(document.location.href).replaceAll(".html", "").replaceAll("Chapter", "")].count; i++){
+                const li = document.createElement("li")
+                li.innerHTML = i + 1
+                settingNumberPageCount.append(li)
                 const img = document.createElement("img");
                 chapterContent.append(img)
                 arrayChapter.push((fetch(`/My-projects/network/manga/${product.name.replaceAll(" ", "")}/Vol1/${Href(document.location.href).replaceAll(".html", "")}/${(i + 1).toString().padStart(3,"0")}.jpg`).then(function (response){
@@ -117,11 +120,6 @@ function chapterLoader(products){
                     chapterContentImg = document.querySelectorAll(".ChapterContent > img")
                     img.style.width = html.offsetWidth - (html.offsetWidth / 100) * 4 + "px"
                     settingNumberPage.innerHTML = `0/${chapterContentImg.length}`;
-                        for (let i = 0; i < chapterContentImg.length; i++) {
-                    const li = document.createElement("li")
-                    li.innerHTML = i + 1
-                    settingNumberPageCount.append(li)
-                    }
                     settingNumberPageCountLi = document.querySelectorAll("#settingNumberPageCount > li")
                     settingNumberPageCountLi.forEach((t,l) =>{
                         t.addEventListener("click", function () {
