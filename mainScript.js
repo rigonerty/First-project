@@ -72,12 +72,27 @@ document.addEventListener("click", function (e) {
     const withinSearch = e.composedPath().includes(searchBlock);
     const withinSearchInput = e.composedPath().includes(inputSearch)
     const withinSearchImg = e.composedPath().includes(loopSearch)
+    const withinNav = e.composedPath().includes(nav)
+    const withinNavShow = e.composedPath().includes(navShow)
     if (!withinSearch && (!withinSearchInput && !withinSearchImg) && searchstatus) {
         searchBlock.style.display = "none"
         content.style.filter = "blur(0)";
         nav.style.filter = "blur(0)"
         header.style.filter = "blur(0)"
         searchstatus = false
+    }
+    if (!withinNav && !withinNavShow){
+        nav.style.left = "-225px"
+        content.style.margin = "2%"
+        web.style.marginTop = "50px"
+        leftNav.style.marginLeft = "20px"
+        navShow.style.visibility = "visible"
+        setTimeout(function () {
+            nav.style.opacity = "0"
+        }, 600)
+        content.style.filter = "blur(0)";
+        header.style.filter = "blur(0)"
+        navStatus = false
     }
 })
 document.addEventListener("keydown", function (e) {
