@@ -103,6 +103,8 @@ function chapterLoader(products){
     for(const product of products){
         if(product.name == title.innerHTML){
             for (let i = 0; i < product.listChapters[Href(document.location.href).replaceAll(".html", "").replaceAll("Chapter", "")].count; i++){
+                const img = document.createElement("img");
+                chapterContent.append(img)
                 arrayChapter.push((fetch(`/My-projects/network/manga/${product.name.replaceAll(" ", "")}/Vol1/${Href(document.location.href).replaceAll(".html", "")}/${(i + 1).toString().padStart(3,"0")}.jpg`).then(function (response){
                         if(!response.ok){
                             
@@ -110,50 +112,41 @@ function chapterLoader(products){
                         }
                         else{return response.blob()}
                 }).then(function (blob) {
-                    return blob
-                })))
-                
-            }
-            Promise.allSettled(arrayChapter).then(function(results){
-                for(const result of results){
-                    const urlObject = URL.createObjectURL(result.value)
-                    const img = document.createElement("img");
+                    const urlObject = URL.createObjectURL(blob)
                     img.src = urlObject;
-                    chapterContent.append(img)
                     chapterContentImg = document.querySelectorAll(".ChapterContent > img")
                     img.style.width = html.offsetWidth - (html.offsetWidth / 100) * 4 + "px"
-                    settingNumberPage.innerHTML = `0/${chapterContentImg.length}`
-                }
-                for (let i = 0; i < chapterContentImg.length; i++) {
+                    settingNumberPage.innerHTML = `0/${chapterContentImg.length}`;
+                        for (let i = 0; i < chapterContentImg.length; i++) {
                     const li = document.createElement("li")
                     li.innerHTML = i + 1
                     settingNumberPageCount.append(li)
-                }
-                settingNumberPageCountLi = document.querySelectorAll("#settingNumberPageCount > li")
-                settingNumberPageCountLi.forEach((t,l) =>{
-                    t.addEventListener("click", function () {
-                        settingNumberPage.innerHTML = `${l + 1}/${chapterContentImg.length}`
-                        countStyleImg = l
-                        if (countStyleReading == 1) {
+                    }
+                    settingNumberPageCountLi = document.querySelectorAll("#settingNumberPageCount > li")
+                    settingNumberPageCountLi.forEach((t,l) =>{
+                        t.addEventListener("click", function () {
+                            settingNumberPage.innerHTML = `${l + 1}/${chapterContentImg.length}`
                             countStyleImg = l
-                            chapterContentImg.forEach((x, y) => {
-                                if (y == countStyleImg) {
-                                    x.style.display = "block"
-                                } else {
-                                    x.style.display = "none"
-                                }
-                                window.scrollTo(0, 0)
-                            })
-                        }else{
-                            window.scrollTo(0,0)
-                            window.scrollTo(0, chapterContentImg[l].getBoundingClientRect().y + 1)
-                        }
+                            if (countStyleReading == 1) {
+                                countStyleImg = l
+                                chapterContentImg.forEach((x, y) => {
+                                    if (y == countStyleImg) {
+                                        x.style.display = "block"
+                                    } else {
+                                        x.style.display = "none"
+                                    }
+                                    window.scrollTo(0, 0)
+                                })
+                            }else{
+                                window.scrollTo(0,0)
+                                window.scrollTo(0, chapterContentImg[l].getBoundingClientRect().y + 1)
+                            }
+                        })
                     })
-                })
-
-            }).then(function(){
+                })))
                 
-            })
+            }
+            
         }
     }
 }
