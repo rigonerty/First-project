@@ -188,7 +188,7 @@ fetch("/My-projects/main.json").then(function (response) {
     JSON = json
 })
 function blobImgSearch(product) {
-        const url = `/img/manga/cover/${product.url}`
+        const url = `/My-projects/img/manga/cover/${product.url}`
         fetch(url).then(function (response) {
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`)
@@ -230,7 +230,7 @@ for(let t = 0; t < 2; t++){
     divSEARCHI = document.querySelectorAll(".DivSearch > i")
     i.style.backgroundSize = "cover"
     i.style.backgroundRepeat = "no-repeat"
-    i.style.backgroundImage = `url(/img/icon/StyleSearch${t + 1}.svg)`
+    i.style.backgroundImage = `url(/My-projects/img/icon/StyleSearch${t + 1}.svg)`
 }
 
 divSEARCHI[0].addEventListener("click", function () {
@@ -259,7 +259,7 @@ function LoadSearch(blob, product) {
     h5.innerHTML = product.name;
     img.src = urlObject;
     div.classList.add("contentChild")
-    a.href = `/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "") }.html`
+    a.href = `/My-projects/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "") }.html`
     a.append(img)
     div1.append(h5)
     div1.append(p)
