@@ -182,7 +182,7 @@ navShow.addEventListener("click", function () {
     navStatus = true
 })
 let JSON
-fetch("/main.json").then(function (response) {
+fetch("/My-projects/main.json").then(function (response) {
     return response.json()
 }).then(function (json) {
     JSON = json
