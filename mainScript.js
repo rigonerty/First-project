@@ -181,7 +181,92 @@ navShow.addEventListener("click", function () {
     }
     navStatus = true
 })
+let JSON
+fetch("/main.json").then(function (response) {
+    return response.json()
+}).then(function (json) {
+    JSON = json
+})
+function blobImgSearch(product) {
+        const url = `/img/manga/cover/${product.url}`
+        fetch(url).then(function (response) {
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`)
+            } else {
+                return response.blob()
+            }
+        }).then(function (blob) {
+            LoadSearch(blob, product)
+        })
 
+
+}
+const searchHeadInput = document.querySelector(".searchHead > input")
+const genresSearch = document.querySelector("#genres")
+const statusTitleSearch = document.querySelector("#statusTitle")
+const searchContent = document.querySelector(".searchContent")
+const searchRange = document.querySelector(".searchRange")
+// let x1 = "Search"
+// let x2 = "Sear"
+// alert(x2 == x1.slice(0, x2.length))
+searchHeadInput.addEventListener("input", function(){
+    searchContent.innerHTML = ""
+    for(const json of JSON){
+        if(searchHeadInput.value.toLowerCase() == json.name.toLowerCase().slice(0, searchHeadInput.value.length)){
+            blobImgSearch(json)
+        }
+    }
+})
+
+
+searchContent.innerHTML = ""
+const divSEARCH = document.createElement("div")
+divSEARCH.classList.add("DivSearch")
+let divSEARCHI;
+searchRange.append(divSEARCH)
+for(let t = 0; t < 2; t++){
+    const i = document.createElement("i")
+    divSEARCH.append(i)
+    divSEARCHI = document.querySelectorAll(".DivSearch > i")
+    i.style.backgroundSize = "cover"
+    i.style.backgroundRepeat = "no-repeat"
+    i.style.backgroundImage = `url(/img/icon/StyleSearch${t + 1}.svg)`
+}
+
+divSEARCHI[0].addEventListener("click", function () {
+    const contentChilds = document.querySelectorAll(".contentChild")
+    searchContent.style.display = "block"
+    for (const contentChild of contentChilds ){
+        contentChild.classList.add("vertical")
+    }
+})
+divSEARCHI[1].addEventListener("click", function () {
+    const contentChilds = document.querySelectorAll(".contentChild")
+    searchContent.style.display = "flex"
+    for (const contentChild of contentChilds) {
+        contentChild.classList.remove("vertical")
+    }
+})
+function LoadSearch(blob, product) {
+    const a = document.createElement("a")
+    const urlObject = URL.createObjectURL(blob)
+    const div = document.createElement("div")
+    const div1 = document.createElement("div")
+    const img = document.createElement("img")
+    const h5 = document.createElement("h5")
+    const p = document.createElement("p")
+    p.innerHTML = product.description
+    h5.innerHTML = product.name;
+    img.src = urlObject;
+    div.classList.add("contentChild")
+    a.href = `/network/manga/${product.name.replaceAll(" ", "")}/${product.name.replaceAll(" ", "") }.html`
+    a.append(img)
+    div1.append(h5)
+    div1.append(p)
+    a.append(div1)
+    div.append(a)
+    searchContent.append(div)
+}
 
 
 
