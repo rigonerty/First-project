@@ -186,7 +186,7 @@ header{
     display: none;
     height: 30px;
     width: 30px;
-    background-image: url(/img/icon/search_strong_icon_black.png);
+    background-image: url(/My-projects/img/icon/search_strong_icon_black.png);
     background-size: cover;
 }
 .rightNav input:focus{
